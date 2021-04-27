@@ -1,0 +1,48 @@
+<h1 [ngStyle]="{'text-align': 'center'}">List of Pokemons</h1>
+
+<div class="searchContainer">
+    <mat-form-field class="half-width" appearance="outline">
+        <mat-label>Search the Pokemon</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. pikachu" #input>
+        <mat-icon matSuffix>catching_pokemon</mat-icon>
+    </mat-form-field>
+</div>
+
+
+<div class="mat-elevation-z8" [ngStyle]="{'padding': '3%'}">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef [ngStyle]="{'width': '60px'}"> Id </th>
+            <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+        </ng-container>
+    
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header [ngStyle]="{'width': '150px'}"> Name </th>
+            <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+        </ng-container>
+    
+        <!-- Picture Column -->
+        <ng-container matColumnDef="pic">
+            <th mat-header-cell *matHeaderCellDef> Picture </th>
+            <td mat-cell *matCellDef="let element"> 
+                <img [src]="element.pic" 
+                     [alt]="element.name"
+                     [ngStyle]="{ 'width': '85px' }"/>
+            </td>
+        </ng-container>
+    
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" [ngStyle]="{ 'height': '110px' }"></tr>
+    
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{ input.value }}"</td>
+        </tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
+  
