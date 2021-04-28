@@ -1,1 +1,13 @@
-<app-pokemonlist></app-pokemonlist>
+<h1 [ngStyle]="{'text-align': 'center'}">List of Pokemons</h1>
+<mat-tab-group>
+    <mat-tab label="With Angular Material">
+        <br> 
+        <app-pokemonlist></app-pokemonlist>
+    </mat-tab>
+    <mat-tab label="Widthout Angular Material"> 
+        <br>
+        <app-pokemon-list-normal></app-pokemon-list-normal> 
+    </mat-tab>
+    <mat-tab label="About me"> About me </mat-tab>
+</mat-tab-group>
+  

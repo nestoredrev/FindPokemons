@@ -1,0 +1,48 @@
+<div class="searchContainer">
+    <mat-form-field class="half-width" appearance="outline">
+        <mat-label>Search the Pokemon</mat-label>
+        <input matInput (keyup)="applyFilter(txtSearch.value)" placeholder="Ex. pikachu" #txtSearch>
+        <mat-icon matSuffix>catching_pokemon</mat-icon>
+    </mat-form-field>
+</div>
+<hr>
+<br>
+
+<div class="paginatorContainer">
+    <button mat-raised-button 
+            color="primary"
+            (click)="prevPage()">
+            Previus
+    </button>
+    
+    <p>{{ page + 1 | number }} / {{ page + 5 | number }} of {{ pokemons.length }}</p>
+    
+    <button mat-raised-button 
+            color="primary"
+            (click)="nextPage()"
+            [disabled]="(pokemons | filter:page:searchTerm).length === 0">
+            Next
+</button>
+</div>
+<br>
+
+<table [ngStyle]="{'text-align': 'center'}">
+    <thead>
+        <tr>
+            <th> Id </th>
+            <th> Name </th>
+            <th> Picture </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pokemon of pokemons | filter:page:searchTerm" [ngStyle]="{'height': '100px'}">
+            <td class="mat-cell"> {{ pokemon.id }} </td>
+            <td class="mat-cell"> {{ pokemon.name }} </td>
+            <td class="mat-cell">  
+                <img [src]="pokemon.pic" 
+                     [alt]="pokemon.name"
+                     [ngStyle]="{'width': '75px'}"> 
+            </td>
+        </tr>
+    </tbody>
+</table>

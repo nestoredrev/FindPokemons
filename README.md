@@ -1,5 +1,9 @@
 # PokemonFind
 
+This example contain two parts:
+*   One table created by Angular Material with the own filter and paginator to the table.
+*   One table created without Angular Material with pipes.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
 
 ## Development server

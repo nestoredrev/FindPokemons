@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PokemonModule } from './pokemon/pokemon.module';
 import { HttpClientModule } from "@angular/common/http";
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { HttpClientModule } from "@angular/common/http";
     BrowserModule,
     BrowserAnimationsModule,
     PokemonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
